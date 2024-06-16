@@ -2,3 +2,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    font-family: 'Roboto', sans-serif
+}
+
+body.light {
+    --bg-color: white;
+    --text-color: "black";
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+  
+  body.dark {
+    --bg-color: "#111827";
+    --text-color: white;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+
+.container {
+    @apply w-[90%] mx-auto
+}

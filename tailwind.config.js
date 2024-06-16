@@ -4,8 +4,19 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'roboto': "Roboto",
+        'anton': "Anton"
+      }
+    },
   },
-  plugins: [],
+  
+  plugins: [
+    require('daisyui'),
+  ],
+  daisyui: {
+    themes: false,
+  },
 }
 
