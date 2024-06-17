@@ -7,9 +7,17 @@ module.exports = {
     extend: {
       fontFamily: {
         'roboto': "Roboto",
-        'anton': "Anton"
+        'jamjuree': "Bai Jamjuree"
+      },
+      colors: {
+        'reded': "#790915",
+        'purple': "#7300FF"
       }
     },
+    boxShadow: {
+      'round': '0 0 8px 1px rgba(0, 0, 0, 0.1)',
+      'round-md': '0 0 10px 2px rgba(0, 0, 0, 0.1)'
+    }
   },
   
   plugins: [

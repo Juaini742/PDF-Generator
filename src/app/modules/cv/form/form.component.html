@@ -1,0 +1,291 @@
+<section class="w-full flex flex-col gap-5">
+  <div class="sticky top-24 z-10 flex gap-3">
+    <button
+      (click)="onSubmit()"
+      class="text-white shadow-round-md rounded-lg gradient-body hover:scale-105 trans-300 py-2 w-24"
+    >
+      SAVE
+    </button>
+    <button
+      class="text-white rounded-lg border-2 bg-black/30 backdrop-blur-sm border-reded hover:scale-105 trans-300 py-2 w-28"
+    >
+      DOWNLOAD
+    </button>
+  </div>
+  <!-- HEADER -->
+  <div
+    class="shadow-round hover:shadow-round-md pb-5 rounded-md overflow-hidden"
+  >
+    <div class="flex items-center rounded-t justify-between bg-primary px-3">
+      <h4 class="font-bold text-xl text-white">HEADER</h4>
+      <div class="flex h-12 pr-3 text-white justify-end w-[170px] rounded-tr">
+        <button (click)="onShowContent('header')">
+          <img
+            [src]="
+              isShowContent['header']
+                ? '../../../../assets/images/up.png'
+                : '../../../../assets/images/down.png'
+            "
+            alt=""
+            width="25"
+          />
+        </button>
+      </div>
+    </div>
+    <div
+      [ngClass]="{
+        'h-0': !isShowContent['header'],
+        'h-full': isShowContent['header']
+      }"
+      class="px-4 overflow-hidden mt-5 flex flex-col gap-4"
+    >
+      <app-input
+        type="number"
+        [label]="'Phone'"
+        placeholder=" "
+        [disabled]="false"
+        [(ngModel)]="formData.controls.phone.value"
+        (ngModelChange)="updateFormControl('phone', $event)"
+        [class]="'mt-2'"
+      ></app-input>
+      <app-input
+        [type]="'email'"
+        [label]="'Email'"
+        [placeholder]="' '"
+        [disabled]="false"
+        [(ngModel)]="formData.controls.email.value"
+        (ngModelChange)="updateFormControl('email', $event)"
+      >
+      </app-input>
+      <app-input
+        [type]="'url'"
+        [label]="'LinkedIn'"
+        [placeholder]="' '"
+        [disabled]="false"
+        [(ngModel)]="formData.controls.linkedIn.value"
+        (ngModelChange)="updateFormControl('linkedIn', $event)"
+      >
+      </app-input>
+      <app-input
+        [type]="'url'"
+        [label]="'Portfolio URL'"
+        [placeholder]="' '"
+        [disabled]="false"
+        [(ngModel)]="formData.controls.portfolioURL.value"
+        (ngModelChange)="updateFormControl('portfolioURL', $event)"
+      >
+      </app-input>
+      <app-input
+        [type]="'text'"
+        [label]="'Address'"
+        [placeholder]="' '"
+        [disabled]="false"
+        [(ngModel)]="formData.controls.address.value"
+        (ngModelChange)="updateFormControl('address', $event)"
+      >
+      </app-input>
+      <app-button
+        label="ADD"
+        class="self-end py-2 w-28 text-white"
+      ></app-button>
+    </div>
+  </div>
+
+  <!-- NAME -->
+  <div
+    class="shadow-round hover:shadow-round-md pb-5 rounded-md overflow-hidden"
+  >
+    <div class="flex items-center rounded-t justify-between bg-primary px-3">
+      <h4 class="font-bold text-xl text-white">NAME</h4>
+      <div class="flex h-12 pr-3 text-white justify-end w-[170px] rounded-tr">
+        <button (click)="onShowContent('name')">
+          <img
+            [src]="
+              isShowContent['name']
+                ? '../../../../assets/images/up.png'
+                : '../../../../assets/images/down.png'
+            "
+            alt=""
+            width="25"
+          />
+        </button>
+      </div>
+    </div>
+    <div
+      [ngClass]="{
+        'h-0': !isShowContent['name'],
+        'h-full': isShowContent['name']
+      }"
+      class="overflow-hidden px-4 mt-5 flex flex-col gap-2"
+    >
+      <app-input
+        [class]="'mt-2'"
+        [type]="'text'"
+        [label]="'Name'"
+        [placeholder]="' '"
+        [disabled]="false"
+        [(ngModel)]="formData.controls.name.value"
+        (ngModelChange)="updateFormControl('name', $event)"
+      >
+      </app-input>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="shadow-round hover:shadow-round-md pb-5 rounded-md flex flex-col">
+    <div class="flex items-center rounded-t justify-between bg-primary px-3">
+      <h4 class="font-bold text-xl text-white">ABOUT</h4>
+      <div class="flex h-12 pr-3 text-white justify-end w-[170px] rounded-tr">
+        <button (click)="onShowContent('about')">
+          <img
+            [src]="
+              isShowContent['about']
+                ? '../../../../assets/images/up.png'
+                : '../../../../assets/images/down.png'
+            "
+            alt=""
+            width="25"
+          />
+        </button>
+      </div>
+    </div>
+    <div
+      [ngClass]="{
+        'h-0': !isShowContent['about'],
+        'h-full': isShowContent['about']
+      }"
+      class="overflow-hidden px-4 mt-5 flex flex-col gap-2"
+    >
+      <quill-editor
+        class="w-full"
+        [(ngModel)]="formData.controls.about.value"
+        (ngModelChange)="updateFormControl('about', $event)"
+        [style]="{ height: '200px' }"
+        placeholder="Type about you..."
+        [modules]="{
+          toolbar: [
+            ['bold', 'italic', 'underline'],
+            [{ list: 'bullet' }, { list: 'ordered' }]
+          ]
+        }"
+      >
+      </quill-editor>
+    </div>
+  </div>
+
+  <!-- EXPERIENCES -->
+  <div
+    class="flex flex-col shadow-round hover:shadow-round-md pb-5 rounded-md overflow-hidden"
+  >
+    <div class="flex items-center rounded-t justify-between bg-primary px-3">
+      <h4 class="font-bold text-xl text-white">EXPERIENCES</h4>
+      <div class="flex h-12 pr-3 text-white justify-end w-[170px] rounded-tr">
+        <button (click)="onShowContent('experience')">
+          <img
+            [src]="
+              isShowContent['experience']
+                ? '../../../../assets/images/up.png'
+                : '../../../../assets/images/down.png'
+            "
+            alt=""
+            width="25"
+          />
+        </button>
+      </div>
+    </div>
+
+    <div [formGroup]="formData">
+      <div
+        [ngClass]="{
+          'h-0': !isShowContent['experience'],
+          'h-full': isShowContent['experience']
+        }"
+        class="px-4"
+        formArrayName="experiences"
+      >
+        <div
+          class="mt-5 flex flex-col gap-2 border-b-2 pb-4"
+          *ngFor="
+            let exp of experiencesFormArray.controls;
+            let i = index;
+            trackBy: trackByIndex
+          "
+          [formGroupName]="i"
+        >
+          <h6
+            [ngClass]="{
+              'text-white': !isShowContent['experience'],
+              'text-black': isShowContent['experience']
+            }"
+          >
+            EXPERIENCE {{ i + 1 }}
+          </h6>
+          <div class="flex justify-between gap-3 flex-col md:flex-row">
+            <app-input
+              formControlName="company"
+              [class]="'w-full'"
+              [type]="'text'"
+              [label]="'Company'"
+              [placeholder]="' '"
+              [disabled]="false"
+            >
+            </app-input>
+            <app-input
+              formControlName="position"
+              [class]="'w-full'"
+              [type]="'text'"
+              [label]="'Position'"
+              [placeholder]="' '"
+              [disabled]="false"
+            >
+            </app-input>
+          </div>
+          <div class="flex justify-between gap-3 flex-col md:flex-row">
+            <app-input
+              formControlName="address"
+              [class]="'w-full'"
+              [type]="'text'"
+              [label]="'Address'"
+              [placeholder]="' '"
+              [disabled]="false"
+            >
+            </app-input>
+            <app-input
+              formControlName="period"
+              [class]="'w-full'"
+              [type]="'text'"
+              [label]="'Period'"
+              [placeholder]="' '"
+              [disabled]="false"
+            >
+            </app-input>
+          </div>
+
+          <div formControlName="expDescription">
+            <quill-editor
+              class="w-full"
+              [formControlName]="'expDescription'"
+              [style]="{ height: '200px' }"
+              placeholder="Enter description..."
+              [modules]="{
+                toolbar: [
+                  ['bold', 'italic', 'underline'],
+                  [{ list: 'bullet' }, { list: 'ordered' }]
+                ]
+              }"
+            >
+            </quill-editor>
+          </div>
+        </div>
+        <div class="mt-3 flex justify-end">
+          <button
+            (click)="addExperience()"
+            class="text-white shadow-round-md rounded-lg gradient-body hover:scale-105 trans-300 py-2 w-24"
+          >
+            ADD
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
