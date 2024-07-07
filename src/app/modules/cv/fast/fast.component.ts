@@ -12,18 +12,19 @@ import html2canvas from 'html2canvas';
 export class FastComponent {
   generatePDF() {
     const elementToPrint: HTMLElement | null = document.getElementById('theContent');
+    const margin: number = 5
     if (elementToPrint) {
       html2canvas(elementToPrint, { scale: 2 }).then(canvas => {
         const pdf = new jsPDF();
         const imgData = canvas.toDataURL('image/png');
-        const imgWidth = 210;
+        const imgWidth = 210 - 2 * margin;
         const pageHeight = 295;
         const imgHeight = (canvas.height * imgWidth) / canvas.width;
         let heightLeft = imgHeight;
 
-        let position = 0;
+        let position = margin;
 
-        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        pdf.addImage(imgData, 'PNG', margin, position, imgWidth, imgHeight);
         heightLeft -= pageHeight;
 
         while (heightLeft >= 0) {
